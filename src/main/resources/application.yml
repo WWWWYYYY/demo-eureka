@@ -1,0 +1,19 @@
+server:
+ port: 8761
+eureka:
+  server:
+#    eviction-interval-timer-in-ms: 1000   #设置清理的间隔时间，而后这个时间使用的是毫秒单位（默认是60秒）；表示当产品服务离线后多久后从eureka服务列表上清除
+    enable-self-preservation: true #设置关闭或者开启保护模式；false 表示服务列表可以随时被清除，ture 也能清除需要在一定时间后被清除 (防止因为网络波动情况下，将正常的微服务移除)
+  client:
+    fetch-registry: false #eureka服务端是否获取相关的注册信息
+    register-with-eureka: false #当前eureka服务端是否注册到eureka服务注册中心
+    service-url:
+        defaultZone: http://admin:admin@localhost:8761/eureka
+  instance: # eureak实例定义
+    hostname: eureka #定义Eureka实例所在的主机名称
+
+spring:
+  security:
+    user:
+      name: admin
+      password: admin
