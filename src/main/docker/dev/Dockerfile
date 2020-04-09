@@ -7,6 +7,7 @@ RUN sh -c 'touch /app.war'
 
 RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
 
-EXPOSE 8761 8861  5701/udp
+EXPOSE 8761
 
-CMD ["java","-Djava.security.egd=file:/dev/./urandom -Xms512m -Xmx512m -Xss256k","-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=8861","-jar","/app.war"]
+
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom ","-jar","/app.war"]
