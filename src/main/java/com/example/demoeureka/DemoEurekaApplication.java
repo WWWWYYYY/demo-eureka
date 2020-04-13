@@ -37,7 +37,8 @@ public class DemoEurekaApplication {
 
     @LoadBalanced
     public void initApplication() {
-        log.info("Running with Spring profile(s) : {}", Arrays.toString(env.getActiveProfiles()));
+        String s = Arrays.toString(env.getActiveProfiles());
+        log.info("Running with Spring profile(s) : {}", s);
         Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
         if (activeProfiles.contains(Constants.SPRING_PROFILE_DEVELOPMENT) && activeProfiles.contains(Constants.SPRING_PROFILE_PRODUCTION)) {
             log.error("You have misconfigured your application! It should not run " +
